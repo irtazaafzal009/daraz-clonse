@@ -2,14 +2,19 @@
     <div>
         <div class="main-container">
             <div class="flex-container">
-                <img :src="logo" alt="logo" class="logo">
+                <router-link  to="/">
+                    <img :src="logo" alt="logo" class="logo">
+                </router-link>
                 <div class="search">
                     <button class="btn-search">
                         <b-icon class="icon-search" icon="search"></b-icon>
                     </button>
                     <input type="text" class="searchBox" :placeholder="placeholderText">
                 </div>
-                <b-icon class="icon-cart" icon="cart2"></b-icon>
+                <div>
+                    <p class="cart-length"> {{$store.state.cart.length}} </p>
+                    <b-icon class="icon-cart" icon="cart2"></b-icon>
+                </div>
                 <img :src="poster" alt="poster" class="poster">
             </div>
             <div class="flex-container-nav">
@@ -142,6 +147,10 @@ select{
 .main-container{
     padding-bottom: 10px;
     box-shadow: 0px 15px 10px -15px #111;
+}
+.cart-length{
+    position: absolute;
+    
 }
 </style>
     

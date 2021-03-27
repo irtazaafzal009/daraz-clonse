@@ -61,7 +61,8 @@ export default {
         return {
             
         }
-    }
+    },
+    mounted(){}
 }
 </script>
 <style scoped>
