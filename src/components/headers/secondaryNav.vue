@@ -11,9 +11,20 @@
                     </button>
                     <input type="text" class="searchBox" :placeholder="placeholderText">
                 </div>
-                <div>
+                <div class="cart-ico">
                     <p class="cart-length"> {{$store.state.cart.length}} </p>
-                    <b-icon class="icon-cart" icon="cart2"></b-icon>
+                    <b-dropdown variant="#FFFFFF">
+                        <template slot="button-content">
+                            <b-icon class="icon-cart" icon="cart2"></b-icon>
+                        </template>
+                            <b-dropdown-item v-for="product in $store.state.cart" :key="product.id">
+                                <div class="d-flex">
+                                    <img class="dimg" height="20px" width="20px" :src="product.image" alt="">
+                                    <p class="dtext">{{limitTitle(product.title)}}</p>
+                                    <b-icon class="t-icon" icon="trash"></b-icon>
+                                </div>
+                            </b-dropdown-item>
+                    </b-dropdown>
                 </div>
                 <img :src="poster" alt="poster" class="poster">
             </div>
@@ -70,6 +81,11 @@ export default {
             ]
 
         }
+    },
+    methods:{
+        limitTitle(text){
+            return text.length > 25 ? text.slice(0, 15) + '...' : text.slice(0, 25);
+        },
     }
 }
 </script>
@@ -150,7 +166,25 @@ select{
 }
 .cart-length{
     position: absolute;
-    
+    left: 25px;
+    bottom: 12px;
+    font-weight: bolder;
+    color: #f36f36;
+}
+.cart-ico{
+    position: relative;
+}
+.t-icon{
+    margin-left: 5px;
+    padding-top: 5px;
+    position: absolute;
+    right: 0;
+}
+.dtext{
+    margin-left: 5px;
+    margin-right: 5px;
+}
+.dimg{
 }
 </style>
     

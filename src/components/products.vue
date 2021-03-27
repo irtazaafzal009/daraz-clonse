@@ -49,7 +49,8 @@ export default {
         return {
             product: null,
             loader: false,
-            value: 1
+            value: 1,
+            counter: 1
         }
     },
     created(){
@@ -80,8 +81,16 @@ export default {
             }
         },
     addToCart: function(){
-        this.$store.state.cart.push(this.product)
+        if(!this.existInCart()){
+            this.$store.state.cart.push(this.product)
         }
+        },
+    existInCart(){
+        if(this.$store.state.cart.some((product) => product.route === this.product.route)){
+            return true
+        }
+        return false
+    }
     }
 }
 </script>

@@ -1,6 +1,25 @@
 <template>
 <div>
 <div class="listing">
+    <b-carousel
+      id="carousel-1"
+      v-model="slide"
+      :interval="4000"
+      controls
+      indicators
+      background="#ababab"
+      img-width="1024"
+      img-height="400"
+      style="text-shadow: 1px 1px 2px #333;"
+    >
+      <b-carousel-slide
+        :img-src="headerPoster1"
+      ></b-carousel-slide>
+      <b-carousel-slide 
+      :img-src="headerPoster2">
+      </b-carousel-slide>
+    </b-carousel>
+
     <div class="container sale-container">
         <div v-if="loader" class="d-flex justify-content-center">
                 <div class="lds-ellipsis "><div></div><div></div><div></div><div></div></div>
@@ -25,11 +44,15 @@
 </div>
 </template>
 <script>
-import axios from 'axios';
+import dheader from '../assets/images/d-header.jpg'
+import dheader2 from '../assets/images/header-img.jpg'
+import axios from 'axios'
 export default {
     name:'productListing',
     data(){
         return {
+            headerPoster1: dheader,
+            headerPoster2: dheader2,
             allProducts : null,
             allProductTitle : [],
             loader: false
@@ -74,10 +97,10 @@ export default {
  .sale-container{
      background-color: white;
      padding: 20px;
+     margin-top: 50px;
  }
  .listing{
      background-color:#eff0f5;
-     padding-top: 50px;
      padding-bottom: 50px;
  }
  .card{
@@ -164,4 +187,6 @@ export default {
   }
 }
  /***/
+ .carousel{
+ }
 </style>

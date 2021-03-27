@@ -29,6 +29,5 @@ export default {
 <style>
   @import './assets/styles/main.css';
 </style>
-<style scoped>
-
+<style lang="scss">
 </style>
